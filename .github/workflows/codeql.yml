@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['ts', 'tsx', 'html','css', 'json', 'js']
+        language: ['ionic', 'angular', 'javascript']
 
     steps:
     - name: Checkout repository
