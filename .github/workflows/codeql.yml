@@ -23,8 +23,6 @@ jobs:
       fail-fast: false
       matrix:
         language: [ $detected-codeql-languages ]
-        # CodeQL supports [ $supported-codeql-languages ]
-        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
 
     steps:
     - name: Checkout repository
