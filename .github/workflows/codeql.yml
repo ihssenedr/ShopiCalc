@@ -2,11 +2,10 @@
 name: "CodeQL"
 
 on:
+  workflow_dispatch:
   push:
-    branches: [ $default_branch, $protected_branches ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ $default_branch ]
+    branches: 
+      - main
   #schedule:
   #  - cron: "*/5 * * * *"
 
