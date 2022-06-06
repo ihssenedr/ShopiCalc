@@ -1,0 +1,22 @@
+section {
+  margin-top: 1em;
+  margin-bottom: 2.5em;
+}
+
+section:not(.full-width),
+.full-width > header {
+  padding: 0 10px;
+}
+.input-text {
+  padding: 3rem 5rem 1rem 2rem;
+  border: none;
+  border-radius: 0;
+  background: #eee;
+  width: 100%;
+}
+ion-text h2, p{
+  text-align: center;
+}
+ion-text h2 {
+  font-weight: bold;
+}
