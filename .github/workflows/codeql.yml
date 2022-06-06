@@ -21,7 +21,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ $detected-codeql-languages ]
+        language: ['ts', 'tsx', 'html','css', 'json', 'js']
 
     steps:
     - name: Checkout repository
