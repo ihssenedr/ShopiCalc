@@ -6,6 +6,7 @@ on:
       - master
 jobs :
   build:
+    name: build
     concurrency: staging_build
     runs-on: ubuntu-latest
     steps:
@@ -14,6 +15,8 @@ jobs :
           npm ci
           npm run all
   test:
+    name : test
+    needs: build
     runs-on: ubuntu-latest
     concurrency: staging_test
     steps:
