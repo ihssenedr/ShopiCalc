@@ -7,8 +7,8 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ $default_branch ]
-  schedule:
-    - cron: "*/5 * * * *"
+  #schedule:
+  #  - cron: "*/5 * * * *"
 
 jobs:
   analyze:
