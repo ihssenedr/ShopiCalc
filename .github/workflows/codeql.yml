@@ -8,7 +8,7 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ $default_branch ]
   schedule:
-    - cron: $cron_weekly
+    - cron: $CRON_DAILY
 
 jobs:
   analyze:
