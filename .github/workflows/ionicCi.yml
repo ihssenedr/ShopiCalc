@@ -26,7 +26,7 @@ jobs :
           distribution: 'adopt'
           java-version: 8
       - name: Use coturiv/setup-ionic
-        uses: ./
+        uses: /home/runner/work/ShopiCalc/ShopiCalc
       - name: run Cordova project tests
         run : |
           ionic start testapp blank --cordova --type angular --no-link --no-git --no-interactive --confirm
