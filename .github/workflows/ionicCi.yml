@@ -5,17 +5,7 @@ on:
       - master
 jobs :
   build:
-    name: build_ionic
-    concurrency: staging_build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout/@v1
-      - run :
-          npm ci
-          npm run all
-  test:
     name : build_APK
-    needs: build_ionic
     runs-on: ubuntu-latest
     concurrency: staging_build_apk
     steps:
