@@ -31,7 +31,7 @@ jobs :
       - name : Setup node.js
       - uses : actions/setup-node@v1
         with :
-          node-verison : 14.x
+          node-version : 14.x
 
       - name: install app dependencies
         run : npm install
