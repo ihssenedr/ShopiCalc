@@ -15,11 +15,26 @@
   <section class="ion-margin">
     <ion-text ><h2>Enter Your Product</h2></ion-text>
     <ion-text><p>We will add it to your grocery List</p></ion-text>
-    <form action="">
+    <form [formGroup]="productForm" (ngSubmit)="submitForm()" action="">
 
-      <ion-input  inputmode="numeric" class="input-text ion-padding ion-margin-bottom" placeholder="Name"> </ion-input>
-      <ion-input  inputmode="numeric" class="input-text ion-padding" placeholder="Price"> </ion-input>
-      <ion-button expand="full" shape="round" class="ion-margin-top">Add</ion-button>
+      <ion-input
+                  class="input-text ion-padding ion-margin-bottom"
+                  placeholder="Name"
+                  formControlName="name"
+                  required> </ion-input>
+      <span class="error ion-padding"
+            *ngIf="isSubmitted && errorControl.name.errors?.required">Name is required</span>
+      <ion-input  inputmode="numeric"
+                  class="input-text ion-padding"
+                  placeholder="Price"
+                  formControlName="price"
+                  required> </ion-input>
+      <span class="error ion-padding"
+            *ngIf="isSubmitted && errorControl.price.errors?.required">Price is required</span>
+      <ion-button expand="full"
+                  shape="round"
+                  class="ion-margin-top"
+                  type="submit">Add</ion-button>
     </form>
   </section>
 
@@ -27,14 +42,13 @@
   <ion-list class="ion-margin">
     <ion-list-header>Items</ion-list-header>
 
-    <ion-item>
+    <ion-item *ngFor="let product of this.groceryList">
       <ion-avatar slot="start">
         <img src="./assets/icon/favicon.png" alt="">
       </ion-avatar>
       <ion-label>
-        <h1>Item 1</h1>
-        <h2>{{'15' | currency: 'EUR'}}</h2>
-        <p>lorem Ipsum lorem Ipsum lorem Ipsum</p>
+        <h1>{{product.name}}</h1>
+        <h2>{{product.price | currency: 'EUR'}}</h2>
       </ion-label>
     </ion-item>
   </ion-list>
