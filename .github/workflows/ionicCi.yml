@@ -35,6 +35,9 @@ jobs :
       - name : Capacitor copy
         run : npx cap copy
 
+      - name: install android
+        run: npm install @capacitor/android
+
       - name : Add android
         run : npx cap add android
 
