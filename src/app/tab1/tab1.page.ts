@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
 
 @Component({
   selector: 'app-tab1',
@@ -10,6 +11,7 @@ export class Tab1Page implements OnInit{
   groceryList: any [] = [];
   productForm: FormGroup;
   isSubmitted = false;
+  total = 0;
   constructor(private fromBuilder: FormBuilder) {}
   get errorControl() {
     return this.productForm.controls;
@@ -22,6 +24,7 @@ export class Tab1Page implements OnInit{
   }
 
   addShopItem(item) {
+    this.total = this.total + Number(item.price) ;
     this.groceryList.push(item);
   }
 
@@ -31,7 +34,6 @@ export class Tab1Page implements OnInit{
       console.log('Please provide all the required values');
       return false;
     }
-    const product =  this.productForm.value;
-    this.groceryList.push(product);
+    this.addShopItem(this.productForm.value);
   }
 }

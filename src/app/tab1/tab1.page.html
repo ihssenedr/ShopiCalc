@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content fullscreen="false">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Home</ion-title>
@@ -37,19 +37,25 @@
                   type="submit">Add</ion-button>
     </form>
   </section>
+      <ion-list class="ion-margin">
+        <ion-list-header>Your List</ion-list-header>
+        <ion-item *ngFor="let product of this.groceryList">
+          <ion-avatar slot="start">
+            <img src="./assets/icon/favicon.png" alt="">
+          </ion-avatar>
+          <ion-label>
+            <h1>{{product.name}}</h1>
+            <ion-badge color="primary">
+              <h2>{{product.price | currency: 'EUR'}}</h2>
+            </ion-badge>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    <ion-footer collapse="fade">
+      <ion-item>
+        <ion-label>{{this.groceryList.length}} Items</ion-label>
+        <ion-note slot="end">{{this.total | currency: 'EUR'}}</ion-note>
+      </ion-item>
+    </ion-footer>
 
-
-  <ion-list class="ion-margin">
-    <ion-list-header>Items</ion-list-header>
-
-    <ion-item *ngFor="let product of this.groceryList">
-      <ion-avatar slot="start">
-        <img src="./assets/icon/favicon.png" alt="">
-      </ion-avatar>
-      <ion-label>
-        <h1>{{product.name}}</h1>
-        <h2>{{product.price | currency: 'EUR'}}</h2>
-      </ion-label>
-    </ion-item>
-  </ion-list>
 </ion-content>
