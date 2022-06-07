@@ -1,12 +1,11 @@
 name : "Ionic CI"
-
 on:
   push:
     branches:
       - master
 jobs :
   build:
-    name: build
+    name: build_ionic
     concurrency: staging_build
     runs-on: ubuntu-latest
     steps:
@@ -15,21 +14,36 @@ jobs :
           npm ci
           npm run all
   test:
-    name : test
-    needs: build
+    name : build_APK
+    needs: build_ionic
     runs-on: ubuntu-latest
-    concurrency: staging_test
+    concurrency: staging_build_apk
     steps:
+      - name: Checkout source
       - uses: actions/checkout@v2
+
+      - name: Setup Java
       - uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
-          java-version: 8
-      - name: Use coturiv/setup-ionic
-        uses: /home/runner/work/ShopiCalc/ShopiCalc
-      - name: run Cordova project tests
-        run : |
-          ionic start testapp blank --cordova --type angular --no-link --no-git --no-interactive --confirm
-          cd testapp
-          ionic cordova platform add android@latest
-          ionic cordova build android
+          distribution: 'zulu'
+          java-version: 11
+
+      - name : Setup node.js
+      - uses : actions/setup-node@v1
+        with :
+          node-verison : 14.x
+
+      - name: install app dependencies
+        run : npm install
+
+      - name : Build app
+        run : npm run build
+
+      - name: Capacitor update
+        run : npx cap update
+
+      - name : Capacitor copy
+        run : npx cap copy
+
+      - name : build app bundle
+        run : cd android && gradle bundle
