@@ -36,7 +36,7 @@ jobs :
         run : npx cap copy
 
       - name : Add android
-      - run : npx cap add android
+        run : npx cap add android
 
       - name : build app bundle
         run : cd android && gradle bundle
