@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
+import {ProductService} from "../services/product.service";
 
 @Component({
   selector: 'app-tab1',
@@ -12,11 +12,16 @@ export class Tab1Page implements OnInit{
   productForm: FormGroup;
   isSubmitted = false;
   total = 0;
-  constructor(private fromBuilder: FormBuilder) {}
+  constructor(private fromBuilder?: FormBuilder,
+              private productService?: ProductService) {}
   get errorControl() {
     return this.productForm.controls;
   }
   ngOnInit(): void {
+    const $productSObservable = this.productService.getShopItems();
+    $productSObservable.subscribe((productList: any[]) => {
+      this.groceryList = productList;
+    });
     this.productForm = this.fromBuilder.group({
       name : ['', [Validators.required]],
       price : ['', [Validators.required]]
@@ -25,7 +30,7 @@ export class Tab1Page implements OnInit{
 
   addShopItem(item) {
     this.total = this.total + Number(item.price) ;
-    this.groceryList.push(item);
+    this.productService.addShopItem(item);
   }
 
   submitForm() {
@@ -35,5 +40,6 @@ export class Tab1Page implements OnInit{
       return false;
     }
     this.addShopItem(this.productForm.value);
+    this.productForm.reset();
   }
 }

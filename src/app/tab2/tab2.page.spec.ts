@@ -18,8 +18,4 @@ describe('Tab2Page', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
