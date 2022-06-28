@@ -10,7 +10,6 @@ pipeline {
                 bat ''' 
                     git version
                     docker version
-                    yarn version
                     npm version
                 '''
             }
@@ -18,12 +17,12 @@ pipeline {
         stage('Install') {
         steps {
             echo "Build Version : ${VERSION} with suffix ${VERSION_RC}"
-            bat 'yarn install'
+            bat 'npm install'
         }
         }
         stage('Test') {
             steps {
-                bat 'yarn test'
+                bat 'npm all'
             }
         }
     }
