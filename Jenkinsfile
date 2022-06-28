@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label "any"
+        label any
     }
      environment {
         VERSION = "0.1.0"        
