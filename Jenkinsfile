@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label any
-    }
+     agent any
      environment {
         VERSION = "0.1.0"        
         VERSION_RC = "rc.2"
