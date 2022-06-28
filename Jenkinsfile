@@ -7,13 +7,11 @@ pipeline {
   stages {
     stage('Audit') {
       steps {
-        bat ''
-        ' 
+        bat ''' 
         git version
         docker version
         npm version
-          ''
-        '
+          '''
       }
     }
     stage('Install') {
