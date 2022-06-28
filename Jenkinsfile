@@ -52,10 +52,10 @@ pipeline {
         bat 'npx cap add android'
       }
     }
-    stage('Build app bundle ndroid') {
+    stage('Build app bundle android') {
       steps {
 
-        bat 'cd android && gradle bundle'
+        bat 'cd android && ./gradle bundle'
       }
     }
   }
