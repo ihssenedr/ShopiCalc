@@ -47,7 +47,8 @@ pipeline {
     }
     stage('add android') {
       steps {
-        bat 'rmdir android'
+        bat 'del /f /s /q android 1>null'
+        bat 'rmdir /s /q android'
         bat 'npx cap add android'
       }
     }
