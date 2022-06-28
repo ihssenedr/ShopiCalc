@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Audit') {
             steps {
-                sh ''' 
+                bat ''' 
                     git version
                     docker version
                     yarn version
@@ -18,12 +18,12 @@ pipeline {
         stage('Install') {
         steps {
             echo "Build Version : ${VERSION} with suffix ${VERSION_RC}"
-            sh 'yarn install'
+            bat 'yarn install'
         }
         }
         stage('Test') {
             steps {
-                sh 'yarn test'
+                bat 'yarn test'
             }
         }
     }
