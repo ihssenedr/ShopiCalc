@@ -1276,7 +1276,7 @@
     "@babel/helper-validator-identifier" "^7.18.6"
     to-fast-properties "^2.0.0"
 
-"@capacitor/android@^3.5.1":
+"@capacitor/android@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@capacitor/android/-/android-3.6.0.tgz#60438a0614415c7c242dda48a031cd45335e067a"
   integrity sha512-X6n0OLy7BE3c6qfVuL7UYyq/aIwEsqIAqtyDOwMdj5k+P1rLQVsGaWERXUtC0BGeoKBD5YgbWiyKwAwg5Spjdg==
