@@ -47,11 +47,13 @@ pipeline {
     }
     stage('add android') {
       steps {
+        bat 'rmdir android'
         bat 'npx cap add android'
       }
     }
     stage('Build app bundle ndroid') {
       steps {
+
         bat 'cd android && gradle bundle'
       }
     }
