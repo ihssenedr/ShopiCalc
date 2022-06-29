@@ -54,7 +54,7 @@ pipeline {
     }
     stage('Build app bundle android') {
       steps {
-        bat 'cd android && gradle clean && gradle build'
+        bat 'cd android && gradle clean'
       }
     }
   }
